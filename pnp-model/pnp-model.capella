@@ -46,7 +46,13 @@
             id="77808adf-29b2-4f0f-a761-f350cc9ad26a" name="Root Operational Activity"/>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
-          id="f6b7bb6c-5cbe-4b35-883d-eb9deb88e414" name="Operational Capabilities"/>
+          id="f6b7bb6c-5cbe-4b35-883d-eb9deb88e414" name="Operational Capabilities">
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="3fb28eb7-b631-410c-871d-672ee7a1287b" name="Produce PCB">
+          <ownedEntityOperationalCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.oa:EntityOperationalCapabilityInvolvement"
+              id="0a4e5dd0-36e3-438c-a9d1-5681eb7bf828" involved="#b875c367-d313-4d4b-9c44-9129b0f79e0f"/>
+        </ownedOperationalCapabilities>
+      </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
           id="11510129-e834-4a8c-baf3-e2ffb38cd130" name="Interfaces"/>
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
@@ -54,7 +60,12 @@
       <ownedRolePkg xsi:type="org.polarsys.capella.core.data.oa:RolePkg" id="407ebda8-1fef-42b5-8f94-a621c45318f6"
           name="Roles"/>
       <ownedEntityPkg xsi:type="org.polarsys.capella.core.data.oa:EntityPkg" id="736d26db-feff-41de-b391-0395192ae622"
-          name="Operational Entities"/>
+          name="Operational Entities">
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="6546a405-0430-4ecc-847a-e8d2e90493fb"
+            name="Operator" abstractType="#b875c367-d313-4d4b-9c44-9129b0f79e0f"/>
+        <ownedEntities xsi:type="org.polarsys.capella.core.data.oa:Entity" id="b875c367-d313-4d4b-9c44-9129b0f79e0f"
+            name="Operator" actor="true" human="true"/>
+      </ownedEntityPkg>
     </ownedArchitectures>
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.ctx:SystemAnalysis"
         id="5fe6057f-9c68-4895-82a3-15cbab05f170" name="System Analysis">
@@ -68,7 +79,28 @@
         </ownedSystemFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
-          id="41573773-d523-4978-8d37-e1a171fd052a" name="Capabilities"/>
+          id="41573773-d523-4978-8d37-e1a171fd052a" name="Capabilities">
+        <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
+            id="c7dc513e-433a-4f79-bb65-7590e5da3c95" name="Test Connections">
+          <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
+              id="c5157f26-370e-47de-8199-7e4ba450b18f" involved="#7536afe5-3c9b-4bc8-b4ba-76cf1331ca07"/>
+        </ownedCapabilities>
+        <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
+            id="030a4ccb-6415-4b0b-a2f2-52805edaf720" name="Apply Solder Paste">
+          <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
+              id="5ddb07d0-c0be-4ae4-8df3-ac6ce3c64d88" involved="#7536afe5-3c9b-4bc8-b4ba-76cf1331ca07"/>
+        </ownedCapabilities>
+        <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
+            id="38742809-dbba-42a3-b5a3-195ea3be3d21" name="Populate SMD Components">
+          <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
+              id="ceebfd8c-9f2b-4d72-9dd3-95f6e47f86b3" involved="#7536afe5-3c9b-4bc8-b4ba-76cf1331ca07"/>
+        </ownedCapabilities>
+        <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
+            id="c4f14ead-3947-4e5c-ad4d-a49dcc3a3bbe" name="Move PCB">
+          <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
+              id="21f6c3b6-6d4e-4467-b35f-3e06775bbb9b" involved="#7536afe5-3c9b-4bc8-b4ba-76cf1331ca07"/>
+        </ownedCapabilities>
+      </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
           id="4ad8b005-ea35-42b6-9af6-00e6ff069af7" name="Interfaces"/>
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
@@ -168,8 +200,15 @@
       </ownedDataPkg>
       <ownedSystemComponentPkg xsi:type="org.polarsys.capella.core.data.ctx:SystemComponentPkg"
           id="a55a7b9b-feeb-437c-adea-d63f73a60c64" name="Structure">
+        <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
+            id="a357d7d6-27f2-48e3-9585-d12983bf4a1d" targetElement="#6546a405-0430-4ecc-847a-e8d2e90493fb"
+            sourceElement="#a402cde8-f1ad-4638-a588-f512bd09d880"/>
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="02613f4b-3a92-4972-8cad-068e50e27875"
             name="System" abstractType="#7536afe5-3c9b-4bc8-b4ba-76cf1331ca07"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="43e845f4-a196-4ddc-9ca7-d43d6d275ee9"
+            name="PNP Machine" abstractType="#67d7d9ad-d112-4881-af31-765290c9d442"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="a402cde8-f1ad-4638-a588-f512bd09d880"
+            name="Operator" abstractType="#1b8b2561-204f-440a-be41-5ce6bcb54c36"/>
         <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
             id="7536afe5-3c9b-4bc8-b4ba-76cf1331ca07" name="System">
           <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
@@ -178,9 +217,32 @@
                 id="3dd6e198-ac9d-410e-956b-c8b2210072b8" name="Default Region"/>
           </ownedStateMachines>
         </ownedSystemComponents>
+        <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
+            id="67d7d9ad-d112-4881-af31-765290c9d442" name="PNP Machine" actor="true"/>
+        <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
+            id="1b8b2561-204f-440a-be41-5ce6bcb54c36" name="Operator" actor="true">
+          <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
+              id="e95e9717-5d08-4ec0-b955-570b48b8f2c6" targetElement="#b875c367-d313-4d4b-9c44-9129b0f79e0f"
+              sourceElement="#1b8b2561-204f-440a-be41-5ce6bcb54c36"/>
+        </ownedSystemComponents>
       </ownedSystemComponentPkg>
       <ownedMissionPkg xsi:type="org.polarsys.capella.core.data.ctx:MissionPkg" id="52c3d5a2-ef8b-4560-adf6-2d8cf9538e40"
-          name="Missions"/>
+          name="Missions">
+        <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
+            id="fcf05349-ac04-4db0-9cf6-1ebd8927424b" targetElement="#3fb28eb7-b631-410c-871d-672ee7a1287b"
+            sourceElement="#9ebfb03c-0cb3-488c-bfe8-b37050c2a0f7"/>
+        <ownedMissions xsi:type="org.polarsys.capella.core.data.ctx:Mission" id="9ebfb03c-0cb3-488c-bfe8-b37050c2a0f7"
+            name="Produce PCB">
+          <ownedCapabilityExploitations xsi:type="org.polarsys.capella.core.data.ctx:CapabilityExploitation"
+              id="f843e2e0-078d-48ba-890f-402012cdc420" capability="#c7dc513e-433a-4f79-bb65-7590e5da3c95"/>
+          <ownedCapabilityExploitations xsi:type="org.polarsys.capella.core.data.ctx:CapabilityExploitation"
+              id="be803b3d-1358-4ed2-8198-b95d59f0f7fc" capability="#030a4ccb-6415-4b0b-a2f2-52805edaf720"/>
+          <ownedCapabilityExploitations xsi:type="org.polarsys.capella.core.data.ctx:CapabilityExploitation"
+              id="5ba1b006-24ea-4380-bc8e-eed9d4aa9586" capability="#38742809-dbba-42a3-b5a3-195ea3be3d21"/>
+          <ownedCapabilityExploitations xsi:type="org.polarsys.capella.core.data.ctx:CapabilityExploitation"
+              id="29b565cd-daf3-4bb2-b148-b5280730aeea" capability="#c4f14ead-3947-4e5c-ad4d-a49dcc3a3bbe"/>
+        </ownedMissions>
+      </ownedMissionPkg>
       <ownedOperationalAnalysisRealizations xsi:type="org.polarsys.capella.core.data.ctx:OperationalAnalysisRealization"
           id="8245ca5e-a9e7-4155-b631-0066d9c31e46" targetElement="#78a81bb2-2ae9-4f47-8481-ce1725ef28b0"
           sourceElement="#5fe6057f-9c68-4895-82a3-15cbab05f170"/>
